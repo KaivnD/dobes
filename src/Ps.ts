@@ -1,12 +1,32 @@
 /// <reference path="./types/photoshop.d.ts" />
-/**
- * The application object
- */
+
+import {Adobe, AppType} from './Adobe'
+
 declare const app: Photoshop.Application
 
-export class Ps {
-  public doc: Photoshop.AdobeDocument
+export class Ps extends Adobe {
+  public Doc: Photoshop.AdobeDocument
+  public Layers: Photoshop.ArtLayers
+
   public constructor() {
-    this.doc = app.activeDocument
+    super(AppType.Photoshop)
+    this.Doc = app.activeDocument
+    this.Layers = this.Doc.artLayers
+  }
+
+  /**
+   * AddLayer
+   */
+  public AddLayer(name: string): void {
+    const layer = this.Layers.add()
+    layer.name = name
+  }
+
+  public EventTest(): void{
+    for(let i = 0; i < 1000; i++) {
+      this.AddLayer(i.toString())
+    }
+
+    this.emit('test-done')
   }
 }

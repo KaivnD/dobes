@@ -42,10 +42,13 @@
     "pretty": true /* Stylize errors and messages using color and context. */,
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.d.ts"
   ],
   "exclude": [
-    "node_modules/**"
+    "node_modules/**",
+    "dist/**",
+    "examples/**"
   ],
   "compileOnSave": false
 }

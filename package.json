@@ -18,6 +18,7 @@
     "typescript": "^3.7.3"
   },
   "dependencies": {
+    "@kaivnd/extendscriptr": "^1.2.4",
     "events": "^3.0.0"
   }
 }

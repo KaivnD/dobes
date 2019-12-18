@@ -2,8 +2,6 @@ const { Ps } = require('../dist')
 
 const ps = new Ps()
 
-ps.on('test-done', () => {
-  alert('1000 layer added')
-})
+const layer = ps.FindLayer('图层1')
 
-ps.EventTest()
+ps.SelectAllInLayer(layer)

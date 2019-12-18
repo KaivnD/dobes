@@ -6,19 +6,19 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "prebuild": "trash dist",
-    "lint": "eslint src --ext .ts"
+    "lint": "eslint src --ext .ts",
+    "dev": "dober run"
   },
   "devDependencies": {
-    "@types/events": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
+    "dober": "^0.0.5",
     "eslint": "^6.7.2",
     "prettier": "^1.19.1",
     "trash-cli": "^3.0.0",
     "typescript": "^3.7.3"
   },
   "dependencies": {
-    "@kaivnd/extendscriptr": "^1.2.4",
-    "events": "^3.0.0"
+    "@kaivnd/extendscriptr": "^1.2.4"
   }
 }

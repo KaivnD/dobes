@@ -1,3 +1,597 @@
+/**
+ * Contains data describing referenced Action. The action reference object is part of the Action Manager functionality. For details on using the Action Manager, see the Photoshop Scripting Guide.
+ */
+declare class ActionReference {
+  /**
+   * The class name of the referenced ActionReference object.
+   */
+  static readonly typename: string
+
+  /**
+   * Gets reference contained in this reference. Container references provide additional pieces to the reference. This looks like another reference, but it is actually part of the same reference.
+   */
+  getContainer(): ActionReference
+
+  /**
+   * Gets number representing the class of the object.
+   */
+  getDesiredClass(): number
+
+  /**
+   * Gets the enumeration type.
+   */
+  getEnumeratedType(): number
+
+  /**
+   * Gets the enumeration value.
+   */
+  getEnumeratedValue(): number
+
+  /**
+   * Gets the form of this action reference.
+   */
+  getForm(): ReferenceFormType
+
+  /**
+   * Gets the identifier value for reference whose form is identifier.
+   */
+  getIdentifier(): number
+
+  /**
+   * Gets the index value for reference in list or array.
+   */
+  getIndex(): number
+
+  /**
+   * Gets the name of reference.
+   */
+  getName(): string
+
+  /**
+   * Gets the offset of the object's index value.
+   */
+  getOffset(): number
+
+  /**
+   * Gets the property ID value.
+   */
+  getProperty(): number
+
+  /**
+   * Puts new class form and class type into the reference.
+   */
+  putClass(desiredClass: number): void
+
+  /**
+   * Puts an enumeration type and ID into reference along with the desired class for the reference.
+   */
+  putEnumerated(desiredClass: number, enumType: number, value: number): void
+
+  /**
+   * Puts new identifier and value into the reference.
+   */
+  putIdentifier(desiredClass: number, value: number): void
+
+  /**
+   * Puts new index and value into the reference.
+   */
+  putIndex(desiredClass: number, value: number): void
+
+  /**
+   * Puts new name and value into the reference.
+   */
+  putName(desiredClass: number, value: string): void
+
+  /**
+   * Puts new offset and value into the reference.
+   */
+  putOffset(desiredClass: number, value: number): void
+
+  /**
+   * Puts new property and value into the reference.
+   */
+  putProperty(desiredClass: number, value: number): void
+}
+/**
+ * The type of action reference object.
+ */
+declare enum ReferenceFormType {
+  /**
+   * Class.
+   */
+  CLASSTYPE = 7,
+
+  /**
+   * Enumerated.
+   */
+  ENUMERATED = 5,
+
+  /**
+   * Identifier.
+   */
+  IDENTIFIER = 3,
+
+  /**
+   * Index.
+   */
+  INDEX = 2,
+
+  /**
+   * Name.
+   */
+  NAME = 1,
+
+  /**
+   * Offset.
+   */
+  OFFSET = 4,
+
+  /**
+   * Property.
+   */
+  PROPERTY = 6,
+}
+
+/**
+ * A record of key-value pairs for actions, such as those included on the Adobe Photoshop Actions menu. The ActionDescriptor class is part of the Action Manager functionality. For more details on the Action Manager, see the Photoshop Scripting Guide.
+ */
+declare class ActionDescriptor {
+  /**
+   * The number of keys contained in the descriptor.
+   */
+  static readonly count: number
+
+  /**
+   * The class name of the referenced ActionDescriptor object.
+   */
+  static readonly typename: string
+
+  /**
+   * Clears the descriptor.
+   */
+  clear(): void
+
+  /**
+   * Erases key from the descriptor.
+   */
+  erase(key: number): void
+
+  /**
+   * Creates descriptor from stream of bytes; for reading from disk.
+   */
+  fromStream(value: string): void
+
+  /**
+   * Gets the value of key of type boolean.
+   */
+  getBoolean(key: number): boolean
+
+  /**
+   * Gets the value of key of type class.
+   */
+  getClass(key: number): number
+
+  /**
+   * Gets raw byte data as string value.
+   */
+  getData(key: number): string
+
+  /**
+   * Gets the value of key of type double.
+   */
+  getDouble(key: number): number
+
+  /**
+   * Gets the enumeration type of key.
+   */
+  getEnumerationType(key: number): number
+
+  /**
+   * Gets the enumeration value of key.
+   */
+  getEnumerationValue(key: number): number
+
+  /**
+   * Gets the value of key of type integer.
+   */
+  getInteger(key: number): number
+
+  /**
+   * Gets the ID of the Nth key, provided by index.
+   */
+  getKey(index: number): number
+
+  /**
+   * Gets the value of key of type large integer.
+   */
+  getLargeInteger(key: number): number
+
+  /**
+   * Gets the value of key of type list.
+   */
+  getList(key: number): ActionList
+
+  /**
+   * Gets the class ID of an object in key of type object.
+   */
+  getObjectType(key: number): number
+
+  /**
+   * Gets the value of key of type object.
+   */
+  getObjectValue(key: number): ActionDescriptor
+
+  /**
+   * Gets the value of key of type File.
+   */
+  getPath(key: number): File
+
+  /**
+   * Gets the value of key of type ActionReference.
+   */
+  getReference(key: number): ActionReference
+
+  /**
+   * Gets the value of key of type string.
+   */
+  getString(key: number): string
+
+  /**
+   * Gets the type of key.
+   */
+  getType(key: number): DescValueType
+
+  /**
+   * Gets the unit type of key of type UnitDouble.
+   */
+  getUnitDoubleType(key: number): number
+
+  /**
+   * Gets the value of key of type UnitDouble.
+   */
+  getUnitDoubleValue(key: number): number
+
+  /**
+   * Checks whether the descriptor contains the provided key.
+   */
+  hasKey(key: number): boolean
+
+  /**
+   * Determines whether the descriptor is the same as another descriptor.
+   */
+  isEqual(otherDesc: ActionDescriptor): boolean
+
+  /**
+   * Sets the value for key whose type is boolean.
+   */
+  putBoolean(key: number, value: boolean): void
+
+  /**
+   * Sets the value for key whose type is class.
+   */
+  putClass(key: number, value: number): void
+
+  /**
+   * Puts raw byte data as string value.
+   */
+  putData(key: number, value: string): void
+
+  /**
+   * Sets the value for key whose type is double.
+   */
+  putDouble(key: number, value: number): void
+
+  /**
+   * Sets the enumeration type and value for key.
+   */
+  putEnumerated(key: number, enumType: number, value: number): void
+
+  /**
+   * Sets the value for key whose type is integer.
+   */
+  putInteger(key: number, value: number): void
+
+  /**
+   * Sets the value for key whose type is large integer.
+   */
+  putLargeInteger(key: number, value: number): void
+
+  /**
+   * Sets the value for key whose type is an ActionList object.
+   */
+  putList(key: number, value: ActionList): void
+
+  /**
+   * Sets the value for key whose type is an object, represented by an ActionDescriptor.
+   */
+  putObject(key: number, classID: number, value: ActionDescriptor): void
+
+  /**
+   * Sets the value for key whose type is path.
+   */
+  putPath(key: number, value: File): void
+
+  /**
+   * Sets the value for key whose type is an object reference.
+   */
+  putReference(key: number, value: ActionReference): void
+
+  /**
+   * Sets the value for key whose type is string.
+   */
+  putString(key: number, value: string): void
+
+  /**
+   * Sets the value for key whose type is unit value formatted as double.
+   */
+  putUnitDouble(key: number, unitID: number, value: number): void
+
+  /**
+   * Gets the entire descriptor as stream of bytes, for writing to disk.
+   */
+  toStream(): string
+}
+
+/**
+ * The list of commands that comprise an Action (such as an Action created using the Actions palette in the Adobe Photoshop application). The action list object is part of the Action Manager functionality. For details on using the Action Manager, see the Photoshop Scripting Guide.
+ */
+declare class ActionList {
+  /**
+   * The number of commands that comprise the action.
+   */
+  static readonly count: number
+
+  /**
+   * The class name of the referenced ActionList object.
+   */
+  static readonly typename: string
+
+  /**
+   * Clears the list.
+   */
+  clear(): void
+
+  /**
+   * Gets the value of list element of type boolean.
+   */
+  getBoolean(index: number): boolean
+
+  /**
+   * Gets the value of list element of type class.
+   */
+  getClass(index: number): number
+
+  /**
+   * Gets raw byte data as string value.
+   */
+  getData(index: number): string
+
+  /**
+   * Gets the value of list element of type double.
+   */
+  getDouble(index: number): number
+
+  /**
+   * Gets the enumeration type of list element.
+   */
+  getEnumerationType(index: number): number
+
+  /**
+   * Gets the enumeration value of list element.
+   */
+  getEnumerationValue(index: number): number
+
+  /**
+   * Gets the value of list element of type integer.
+   */
+  getInteger(index: number): number
+
+  /**
+   * Gets the value of list element of type large integer.
+   */
+  getLargeInteger(index: number): number
+
+  /**
+   * Gets the value of list element of type list.
+   */
+  getList(index: number): ActionList
+
+  /**
+   * Gets the class ID of list element of type object.
+   */
+  getObjectType(index: number): number
+
+  /**
+   * Gets the value of list element of type object.
+   */
+  getObjectValue(index: number): ActionDescriptor
+
+  /**
+   * Gets the value of list element of type File.
+   */
+  getPath(index: number): File
+
+  /**
+   * Gets the value of list element of type ActionReference.
+   */
+  getReference(index: number): ActionReference
+
+  /**
+   * Gets the value of list element of type string.
+   */
+  getString(index: number): string
+
+  /**
+   * Gets the type of list element.
+   */
+  getType(index: number): DescValueType
+
+  /**
+   * Gets the unit value type of list element of type double.
+   */
+  getUnitDoubleType(index: number): number
+
+  /**
+   * Gets the unit value of list element of type double.
+   */
+  getUnitDoubleValue(index: number): number
+
+  /**
+   * Appends new value, true or false.
+   */
+  putBoolean(value: boolean): void
+
+  /**
+   * Appends new value, class or data type.
+   */
+  putClass(value: number): void
+
+  /**
+   * Appends new value, string containing raw byte data.
+   */
+  putData(value: string): void
+
+  /**
+   * Appends new value, double.
+   */
+  putDouble(value: number): void
+
+  /**
+   * Appends new value, an enumerated (constant) value.
+   */
+  putEnumerated(enumType: number, value: number): void
+
+  /**
+   * Appends new value, an integer.
+   */
+  putInteger(value: number): void
+
+  /**
+   * Appends new value, large integer.
+   */
+  putLargeInteger(value: number): void
+
+  /**
+   * Appends new value, nested action list.
+   */
+  putList(value: ActionList): void
+
+  /**
+   * Appends new value, an object.
+   */
+  putObject(classID: number, value: ActionDescriptor): void
+
+  /**
+   * Appends new value, path.
+   */
+  putPath(value: File): void
+
+  /**
+   * Appends new value, reference to an object created in the script.
+   */
+  putReference(value: ActionReference): void
+
+  /**
+   * Appends new value, string.
+   */
+  putString(value: string): void
+
+  /**
+   * Appends new value, unit/value pair.
+   */
+  putUnitDouble(classID: number, value: number): void
+}
+
+/**
+ * The value type of an object.
+ */
+declare enum DescValueType {
+  /**
+   * Alias.
+   */
+  ALIASTYPE = 11,
+
+  /**
+   * Boolean.
+   */
+  BOOLEANTYPE = 5,
+
+  /**
+   * Class.
+   */
+  CLASSTYPE = 10,
+
+  /**
+   * Double.
+   */
+  DOUBLETYPE = 2,
+
+  /**
+   * Enumeration.
+   */
+  ENUMERATEDTYPE = 8,
+
+  /**
+   * Integer.
+   */
+  INTEGERTYPE = 1,
+
+  /**
+   *
+   */
+  LARGEINTEGERTYPE = 13,
+
+  /**
+   * Action list.
+   */
+  LISTTYPE = 6,
+
+  /**
+   * Object.
+   */
+  OBJECTTYPE = 7,
+
+  /**
+   * Raw.
+   */
+  RAWTYPE = 12,
+
+  /**
+   * Reference.
+   */
+  REFERENCETYPE = 9,
+
+  /**
+   * String.
+   */
+  STRINGTYPE = 4,
+
+  /**
+   * Unit value of type double.
+   */
+  UNITDOUBLE = 3,
+}
+
+/**
+ * Controls whether Photoshop displays dialogs during scripts.
+ */
+declare enum DialogModes {
+  /**
+   * Show all dialogs.
+   */
+  ALL = 1,
+
+  /**
+   * Show only dialogs related to errors.
+   */
+  ERROR = 2,
+
+  /**
+   * Show no dialogs.
+   */
+  NO = 3,
+}
+
 declare namespace Photoshop {
   /**
    * Document formats that Photoshop can open.
@@ -287,26 +881,6 @@ declare namespace Photoshop {
      * Wireless Bitmap format (WBMP)
      */
     WIRELESSBITMAP = 31,
-  }
-
-  /**
-   * Controls whether Photoshop displays dialogs during scripts.
-   */
-  enum DialogModes {
-    /**
-     * Show all dialogs.
-     */
-    ALL = 1,
-
-    /**
-     * Show only dialogs related to errors.
-     */
-    ERROR = 2,
-
-    /**
-     * Show no dialogs.
-     */
-    NO = 3,
   }
 
   /**
@@ -2692,116 +3266,6 @@ declare namespace Photoshop {
      * 24 bits per pixel.
      */
     TWENTYFOUR = 24,
-  }
-
-  /**
-   * The value type of an object.
-   */
-  enum DescValueType {
-    /**
-     * Alias.
-     */
-    ALIASTYPE = 11,
-
-    /**
-     * Boolean.
-     */
-    BOOLEANTYPE = 5,
-
-    /**
-     * Class.
-     */
-    CLASSTYPE = 10,
-
-    /**
-     * Double.
-     */
-    DOUBLETYPE = 2,
-
-    /**
-     * Enumeration.
-     */
-    ENUMERATEDTYPE = 8,
-
-    /**
-     * Integer.
-     */
-    INTEGERTYPE = 1,
-
-    /**
-     *
-     */
-    LARGEINTEGERTYPE = 13,
-
-    /**
-     * Action list.
-     */
-    LISTTYPE = 6,
-
-    /**
-     * Object.
-     */
-    OBJECTTYPE = 7,
-
-    /**
-     * Raw.
-     */
-    RAWTYPE = 12,
-
-    /**
-     * Reference.
-     */
-    REFERENCETYPE = 9,
-
-    /**
-     * String.
-     */
-    STRINGTYPE = 4,
-
-    /**
-     * Unit value of type double.
-     */
-    UNITDOUBLE = 3,
-  }
-
-  /**
-   * The type of action reference object.
-   */
-  enum ReferenceFormType {
-    /**
-     * Class.
-     */
-    CLASSTYPE = 7,
-
-    /**
-     * Enumerated.
-     */
-    ENUMERATED = 5,
-
-    /**
-     * Identifier.
-     */
-    IDENTIFIER = 3,
-
-    /**
-     * Index.
-     */
-    INDEX = 2,
-
-    /**
-     * Name.
-     */
-    NAME = 1,
-
-    /**
-     * Offset.
-     */
-    OFFSET = 4,
-
-    /**
-     * Property.
-     */
-    PROPERTY = 6,
   }
 
   /**
@@ -7077,471 +7541,6 @@ declare namespace Photoshop {
      * The location of the right direction point ("out" position).
      */
     rightDirection: (Point | [number, number])[]
-  }
-
-  /**
-   * A record of key-value pairs for actions, such as those included on the Adobe Photoshop Actions menu. The ActionDescriptor class is part of the Action Manager functionality. For more details on the Action Manager, see the Photoshop Scripting Guide.
-   */
-  class ActionDescriptor {
-    /**
-     * The number of keys contained in the descriptor.
-     */
-    static readonly count: number
-
-    /**
-     * The class name of the referenced ActionDescriptor object.
-     */
-    static readonly typename: string
-
-    /**
-     * Clears the descriptor.
-     */
-    clear(): void
-
-    /**
-     * Erases key from the descriptor.
-     */
-    erase(key: number): void
-
-    /**
-     * Creates descriptor from stream of bytes; for reading from disk.
-     */
-    fromStream(value: string): void
-
-    /**
-     * Gets the value of key of type boolean.
-     */
-    getBoolean(key: number): boolean
-
-    /**
-     * Gets the value of key of type class.
-     */
-    getClass(key: number): number
-
-    /**
-     * Gets raw byte data as string value.
-     */
-    getData(key: number): string
-
-    /**
-     * Gets the value of key of type double.
-     */
-    getDouble(key: number): number
-
-    /**
-     * Gets the enumeration type of key.
-     */
-    getEnumerationType(key: number): number
-
-    /**
-     * Gets the enumeration value of key.
-     */
-    getEnumerationValue(key: number): number
-
-    /**
-     * Gets the value of key of type integer.
-     */
-    getInteger(key: number): number
-
-    /**
-     * Gets the ID of the Nth key, provided by index.
-     */
-    getKey(index: number): number
-
-    /**
-     * Gets the value of key of type large integer.
-     */
-    getLargeInteger(key: number): number
-
-    /**
-     * Gets the value of key of type list.
-     */
-    getList(key: number): ActionList
-
-    /**
-     * Gets the class ID of an object in key of type object.
-     */
-    getObjectType(key: number): number
-
-    /**
-     * Gets the value of key of type object.
-     */
-    getObjectValue(key: number): ActionDescriptor
-
-    /**
-     * Gets the value of key of type File.
-     */
-    getPath(key: number): File
-
-    /**
-     * Gets the value of key of type ActionReference.
-     */
-    getReference(key: number): ActionReference
-
-    /**
-     * Gets the value of key of type string.
-     */
-    getString(key: number): string
-
-    /**
-     * Gets the type of key.
-     */
-    getType(key: number): DescValueType
-
-    /**
-     * Gets the unit type of key of type UnitDouble.
-     */
-    getUnitDoubleType(key: number): number
-
-    /**
-     * Gets the value of key of type UnitDouble.
-     */
-    getUnitDoubleValue(key: number): number
-
-    /**
-     * Checks whether the descriptor contains the provided key.
-     */
-    hasKey(key: number): boolean
-
-    /**
-     * Determines whether the descriptor is the same as another descriptor.
-     */
-    isEqual(otherDesc: ActionDescriptor): boolean
-
-    /**
-     * Sets the value for key whose type is boolean.
-     */
-    putBoolean(key: number, value: boolean): void
-
-    /**
-     * Sets the value for key whose type is class.
-     */
-    putClass(key: number, value: number): void
-
-    /**
-     * Puts raw byte data as string value.
-     */
-    putData(key: number, value: string): void
-
-    /**
-     * Sets the value for key whose type is double.
-     */
-    putDouble(key: number, value: number): void
-
-    /**
-     * Sets the enumeration type and value for key.
-     */
-    putEnumerated(key: number, enumType: number, value: number): void
-
-    /**
-     * Sets the value for key whose type is integer.
-     */
-    putInteger(key: number, value: number): void
-
-    /**
-     * Sets the value for key whose type is large integer.
-     */
-    putLargeInteger(key: number, value: number): void
-
-    /**
-     * Sets the value for key whose type is an ActionList object.
-     */
-    putList(key: number, value: ActionList): void
-
-    /**
-     * Sets the value for key whose type is an object, represented by an ActionDescriptor.
-     */
-    putObject(key: number, classID: number, value: ActionDescriptor): void
-
-    /**
-     * Sets the value for key whose type is path.
-     */
-    putPath(key: number, value: File): void
-
-    /**
-     * Sets the value for key whose type is an object reference.
-     */
-    putReference(key: number, value: ActionReference): void
-
-    /**
-     * Sets the value for key whose type is string.
-     */
-    putString(key: number, value: string): void
-
-    /**
-     * Sets the value for key whose type is unit value formatted as double.
-     */
-    putUnitDouble(key: number, unitID: number, value: number): void
-
-    /**
-     * Gets the entire descriptor as stream of bytes, for writing to disk.
-     */
-    toStream(): string
-  }
-
-  /**
-   * The list of commands that comprise an Action (such as an Action created using the Actions palette in the Adobe Photoshop application). The action list object is part of the Action Manager functionality. For details on using the Action Manager, see the Photoshop Scripting Guide.
-   */
-  class ActionList {
-    /**
-     * The number of commands that comprise the action.
-     */
-    static readonly count: number
-
-    /**
-     * The class name of the referenced ActionList object.
-     */
-    static readonly typename: string
-
-    /**
-     * Clears the list.
-     */
-    clear(): void
-
-    /**
-     * Gets the value of list element of type boolean.
-     */
-    getBoolean(index: number): boolean
-
-    /**
-     * Gets the value of list element of type class.
-     */
-    getClass(index: number): number
-
-    /**
-     * Gets raw byte data as string value.
-     */
-    getData(index: number): string
-
-    /**
-     * Gets the value of list element of type double.
-     */
-    getDouble(index: number): number
-
-    /**
-     * Gets the enumeration type of list element.
-     */
-    getEnumerationType(index: number): number
-
-    /**
-     * Gets the enumeration value of list element.
-     */
-    getEnumerationValue(index: number): number
-
-    /**
-     * Gets the value of list element of type integer.
-     */
-    getInteger(index: number): number
-
-    /**
-     * Gets the value of list element of type large integer.
-     */
-    getLargeInteger(index: number): number
-
-    /**
-     * Gets the value of list element of type list.
-     */
-    getList(index: number): ActionList
-
-    /**
-     * Gets the class ID of list element of type object.
-     */
-    getObjectType(index: number): number
-
-    /**
-     * Gets the value of list element of type object.
-     */
-    getObjectValue(index: number): ActionDescriptor
-
-    /**
-     * Gets the value of list element of type File.
-     */
-    getPath(index: number): File
-
-    /**
-     * Gets the value of list element of type ActionReference.
-     */
-    getReference(index: number): ActionReference
-
-    /**
-     * Gets the value of list element of type string.
-     */
-    getString(index: number): string
-
-    /**
-     * Gets the type of list element.
-     */
-    getType(index: number): DescValueType
-
-    /**
-     * Gets the unit value type of list element of type double.
-     */
-    getUnitDoubleType(index: number): number
-
-    /**
-     * Gets the unit value of list element of type double.
-     */
-    getUnitDoubleValue(index: number): number
-
-    /**
-     * Appends new value, true or false.
-     */
-    putBoolean(value: boolean): void
-
-    /**
-     * Appends new value, class or data type.
-     */
-    putClass(value: number): void
-
-    /**
-     * Appends new value, string containing raw byte data.
-     */
-    putData(value: string): void
-
-    /**
-     * Appends new value, double.
-     */
-    putDouble(value: number): void
-
-    /**
-     * Appends new value, an enumerated (constant) value.
-     */
-    putEnumerated(enumType: number, value: number): void
-
-    /**
-     * Appends new value, an integer.
-     */
-    putInteger(value: number): void
-
-    /**
-     * Appends new value, large integer.
-     */
-    putLargeInteger(value: number): void
-
-    /**
-     * Appends new value, nested action list.
-     */
-    putList(value: ActionList): void
-
-    /**
-     * Appends new value, an object.
-     */
-    putObject(classID: number, value: ActionDescriptor): void
-
-    /**
-     * Appends new value, path.
-     */
-    putPath(value: File): void
-
-    /**
-     * Appends new value, reference to an object created in the script.
-     */
-    putReference(value: ActionReference): void
-
-    /**
-     * Appends new value, string.
-     */
-    putString(value: string): void
-
-    /**
-     * Appends new value, unit/value pair.
-     */
-    putUnitDouble(classID: number, value: number): void
-  }
-
-  /**
-   * Contains data describing referenced Action. The action reference object is part of the Action Manager functionality. For details on using the Action Manager, see the Photoshop Scripting Guide.
-   */
-  class ActionReference {
-    /**
-     * The class name of the referenced ActionReference object.
-     */
-    static readonly typename: string
-
-    /**
-     * Gets reference contained in this reference. Container references provide additional pieces to the reference. This looks like another reference, but it is actually part of the same reference.
-     */
-    getContainer(): ActionReference
-
-    /**
-     * Gets number representing the class of the object.
-     */
-    getDesiredClass(): number
-
-    /**
-     * Gets the enumeration type.
-     */
-    getEnumeratedType(): number
-
-    /**
-     * Gets the enumeration value.
-     */
-    getEnumeratedValue(): number
-
-    /**
-     * Gets the form of this action reference.
-     */
-    getForm(): ReferenceFormType
-
-    /**
-     * Gets the identifier value for reference whose form is identifier.
-     */
-    getIdentifier(): number
-
-    /**
-     * Gets the index value for reference in list or array.
-     */
-    getIndex(): number
-
-    /**
-     * Gets the name of reference.
-     */
-    getName(): string
-
-    /**
-     * Gets the offset of the object's index value.
-     */
-    getOffset(): number
-
-    /**
-     * Gets the property ID value.
-     */
-    getProperty(): number
-
-    /**
-     * Puts new class form and class type into the reference.
-     */
-    putClass(desiredClass: number): void
-
-    /**
-     * Puts an enumeration type and ID into reference along with the desired class for the reference.
-     */
-    putEnumerated(desiredClass: number, enumType: number, value: number): void
-
-    /**
-     * Puts new identifier and value into the reference.
-     */
-    putIdentifier(desiredClass: number, value: number): void
-
-    /**
-     * Puts new index and value into the reference.
-     */
-    putIndex(desiredClass: number, value: number): void
-
-    /**
-     * Puts new name and value into the reference.
-     */
-    putName(desiredClass: number, value: string): void
-
-    /**
-     * Puts new offset and value into the reference.
-     */
-    putOffset(desiredClass: number, value: number): void
-
-    /**
-     * Puts new property and value into the reference.
-     */
-    putProperty(desiredClass: number, value: number): void
   }
 
   /**

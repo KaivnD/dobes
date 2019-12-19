@@ -1,6 +1,7 @@
-/// <reference path="./types/photoshop.d.ts" />
+/// <reference path="../types/photoshop.d.ts" />
 
-import {Adobe, AppType} from './Adobe'
+import {Adobe, AppType} from '../Adobe'
+import { SelAllPixelInLayer, AutoSelect } from './actions';
 
 declare const app: Photoshop.Application
 
@@ -50,21 +51,16 @@ export class Ps extends Adobe {
       return
     }
     this.Doc.activeLayer = layer
-    let id47 = app.charIDToTypeID('setd');
-    let desc11 = new ActionDescriptor();
-    let id48 = app.charIDToTypeID('null');
-    let ref11 = new ActionReference();
-    let id49 = app.charIDToTypeID('Chnl');
-    let id50 = app.charIDToTypeID('fsel');
-    ref11.putProperty(id49, id50);
-    desc11.putReference(id48, ref11);
-    let id51 = app.charIDToTypeID('T   ');
-    let ref12 = new ActionReference();
-    let id52 = app.charIDToTypeID('Chnl');
-    let id53 = app.charIDToTypeID('Chnl');
-    let id54 = app.charIDToTypeID('Trsp');
-    ref12.putEnumerated(id52, id53, id54);
-    desc11.putReference(id51, ref12);
-    app.executeAction(id47, desc11, DialogModes.NO);
+    this.Doc.selection
+    SelAllPixelInLayer()
+  }
+
+  /**
+   * AutoSelContentInLayer
+   */
+  public AutoSelContentInLayer() {
+    this.Doc.selection.deselect()
+    AutoSelect()
+    this.Doc.selection.invert()
   }
 }

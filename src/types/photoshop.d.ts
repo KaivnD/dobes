@@ -9829,6 +9829,8 @@ declare namespace Photoshop {
 
     /**
      * If the Layer is a layer set, this property returns a reference to the corresponding layer set object.
+     * Top Left point x1, y1 and bottom right point x2, y2, with px as unit
+     * [x1, y1, x2, y2]
      */
     readonly bounds: UnitRect
 

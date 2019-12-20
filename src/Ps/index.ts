@@ -58,9 +58,20 @@ export class Ps extends Adobe {
   /**
    * AutoSelContentInLayer
    */
-  public AutoSelContentInLayer() {
+  public AutoSelContentInLayer(layer?: Photoshop.ArtLayer): void {
+    if (!layer) {
+      alert('Select all in layer must have a layer')
+      return
+    }
     this.Doc.selection.deselect()
     AutoSelect()
     this.Doc.selection.invert()
+  }
+
+  /**
+   * LayerBonds
+   */
+  public LayerBonds() {
+    this.Doc.
   }
 }

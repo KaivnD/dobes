@@ -90,3 +90,42 @@ export function LoadStyleFile(path: string) {
   desc171.putBoolean(idAppe, true)
   executeAction(idsetd, desc171, DialogModes.NO)
 }
+
+declare interface PlaceFileOptions {
+  link?: boolean;
+}
+
+export function PlaceFile(
+  file: string,
+  opts: PlaceFileOptions = {
+    link: false
+  }
+): void {
+  let idPlc = charIDToTypeID('Plc ')
+  let desc71 = new ActionDescriptor()
+  let idIdnt = charIDToTypeID('Idnt')
+  desc71.putInteger(idIdnt, opts.link ? 2 : 4)
+  let idnull = charIDToTypeID('null')
+  desc71.putPath(idnull, new File(file))
+  if (opts.link) {
+    let idLnkd = charIDToTypeID('Lnkd')
+    desc71.putBoolean(idLnkd, true)
+  }
+  let idFTcs = charIDToTypeID('FTcs')
+  let idQCSt = charIDToTypeID('QCSt')
+  let idQcsa = charIDToTypeID('Qcsa')
+  desc71.putEnumerated(idFTcs, idQCSt, idQcsa)
+  let idOfst1 = charIDToTypeID('Ofst')
+  let desc72 = new ActionDescriptor()
+  let idHrzn = charIDToTypeID('Hrzn')
+  let idPxl1 = charIDToTypeID('#Pxl')
+  desc72.putUnitDouble(idHrzn, idPxl1, 0.0)
+  let idVrtc = charIDToTypeID('Vrtc')
+  let idPxl = charIDToTypeID('#Pxl')
+  desc72.putUnitDouble(idVrtc, idPxl, -0.0)
+  let idOfst2 = charIDToTypeID('Ofst')
+  desc71.putObject(idOfst1, idOfst2, desc72)
+  let idAntA = charIDToTypeID('AntA')
+  desc71.putBoolean(idAntA, true)
+  executeAction(idPlc, desc71, DialogModes.NO)
+}

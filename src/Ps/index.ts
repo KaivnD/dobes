@@ -1,25 +1,50 @@
 /// <reference path="../types/photoshop.d.ts" />
 
 import {Adobe, AppType} from '../Adobe'
-import { SelAllPixelInLayer, AutoSelect } from './actions';
+import { SelAllPixelInLayer, AutoSelect, PlaceFile, PlaceFileOptions } from './actions';
 
 declare const app: Photoshop.Application
 
-export class Ps extends Adobe {
-  public Doc: Photoshop.AdobeDocument
-  public Layers: Photoshop.ArtLayers
-  public DocName?: string
+declare interface DocumentOptions {
+  width?: UnitValue | number,
+  height?: UnitValue | number,
+  resolution?: number,
+  name?: string,
+  mode?: Photoshop.NewDocumentMode,
+  initialFill?: Photoshop.DocumentFill,
+  pixelAspectRatio?: number,
+  bitsPerChannel?: Photoshop.BitsPerChannelType,
+  colorProfileName?: string,
+}
 
-  public constructor(name?: string) {
+export class Ps extends Adobe {
+  public Doc!: Photoshop.AdobeDocument
+  public Layers!: Photoshop.ArtLayers
+  public ActiveLayer!: Photoshop.Layer
+
+  public constructor(opts?: DocumentOptions) {
     super(AppType.Photoshop)
-    if(!name) {
-      if (app.documents.length === 0) throw new Error('No any document in app')
+    if(!opts) {
+      if (app.documents.length === 0) {
+        alert('Document not found')
+        return
+      }
       this.Doc = app.activeDocument
     } else {
-      this.Doc = app.documents.add()
-      this.DocName = name || ''
+      this.Doc = app.documents.add(
+        opts.width,
+        opts.height, 
+        opts.resolution, 
+        opts.name,
+        opts.mode,
+        opts.initialFill,
+        opts.pixelAspectRatio,
+        opts.bitsPerChannel,
+        opts.colorProfileName
+      )
     }
     this.Layers = this.Doc.artLayers
+    this.ActiveLayer = this.Doc.activeLayer
   }
 
   /**
@@ -69,9 +94,12 @@ export class Ps extends Adobe {
   }
 
   /**
-   * LayerBonds
+   * PlaceFile
    */
-  public LayerBonds() {
-    this.Doc.
+  public PlaceFile(file: string, width: number, opts?: PlaceFileOptions) {
+    let currentWidth = width * this.Doc.resolution / 72
+    let docWidth = Number(String(this.Doc.width).replace(/[^0-9]/ig, ''))
+
+    PlaceFile(file, (docWidth / currentWidth) * 100, opts)
   }
 }

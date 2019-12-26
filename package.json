@@ -7,18 +7,15 @@
     "build": "tsc -p tsconfig.json",
     "prebuild": "trash dist",
     "lint": "eslint src --ext .ts",
-    "dev": "dober run"
+    "dev": "dober run ps"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
-    "dober": "^0.0.6",
+    "dober": "^0.0.8",
     "eslint": "^6.7.2",
     "prettier": "^1.19.1",
     "trash-cli": "^3.0.0",
     "typescript": "^3.7.3"
-  },
-  "dependencies": {
-    "@kaivnd/extendscriptr": "^1.2.4"
   }
 }

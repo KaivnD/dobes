@@ -1,11 +1,7 @@
-const { Ps } = require('../dist')
+import { Ps, arr } from '../dist'
 
-const myapp = new Ps({
-  width: '420mm',
-  height: '297mm',
-  resolution: 127
-})
+const myapp = new Ps()
 
-myapp.PlaceFile('C:\\Users\\KaivnD\\Desktop\\test\\ab.eps', 420, {
-  link: true
+arr(myapp.Layers).forEach(layer => {
+  alert(layer)
 })

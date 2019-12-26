@@ -5,9 +5,10 @@
  * extendscript 自带的 Array 使用for...of...
  * 在build之后运行会得到一个异常，** 引用错误: Symbol 未定义. **
  *
+ * @example arr(myapp.Layers).forEach(layer => alert(layer))
  * @param arr Adobe 的数组，可遍历对象
  */
-export function arr(arr: any[]) {
+export function arr(arr: any[]): any[] {
   let tmp = []
   for (let i = 0; i < arr.length; i++) {
     tmp.push(arr[i])

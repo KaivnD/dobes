@@ -91,12 +91,13 @@ export function LoadStyleFile(path: string) {
   executeAction(idsetd, desc171, DialogModes.NO)
 }
 
-declare interface PlaceFileOptions {
+export interface PlaceFileOptions {
   link?: boolean;
 }
 
 export function PlaceFile(
   file: string,
+  scl: number,
   opts: PlaceFileOptions = {
     link: false
   }
@@ -125,6 +126,14 @@ export function PlaceFile(
   desc72.putUnitDouble(idVrtc, idPxl, -0.0)
   let idOfst2 = charIDToTypeID('Ofst')
   desc71.putObject(idOfst1, idOfst2, desc72)
+  if (scl) {
+    let idWdth = charIDToTypeID('Wdth')
+    let idPrc1 = charIDToTypeID('#Prc')
+    desc71.putUnitDouble(idWdth, idPrc1, scl)
+    let idHght = charIDToTypeID('Hght')
+    let idPrc2 = charIDToTypeID('#Prc')
+    desc71.putUnitDouble(idHght, idPrc2, scl)
+  }
   let idAntA = charIDToTypeID('AntA')
   desc71.putBoolean(idAntA, true)
   executeAction(idPlc, desc71, DialogModes.NO)

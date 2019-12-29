@@ -1754,10 +1754,10 @@ directory-tree@^2.2.3:
   resolved "https://registry.npm.taobao.org/directory-tree/download/directory-tree-2.2.4.tgz#6d5bd7d82e48378e256a1e87b678a43c50076e2e"
   integrity sha1-bVvX2C5IN44lah6HtnikPFAHbi4=
 
-dober@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.npm.taobao.org/dober/download/dober-0.0.8.tgz#ac07e8cedf6fb4b64d146f0ce82f7ee9fc164c29"
-  integrity sha1-rAfozt9vtLZNFG8M6C9+6fwWTCk=
+dober@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.npm.taobao.org/dober/download/dober-0.0.9.tgz#3eea02336efe7a9da3d3f679a3055ae8ac389f33"
+  integrity sha1-PuoCM27+ep2j0/Z5owVa6Kw4nzM=
   dependencies:
     "@babel/core" "^7.4.4"
     "@babel/preset-env" "^7.4.4"

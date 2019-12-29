@@ -15,5 +15,3 @@ export function arr(arr: any[]): any[] {
   }
   return tmp
 }
-
-export * from './path'
